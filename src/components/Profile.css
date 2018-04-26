@@ -1,0 +1,66 @@
+.my-request-header {
+  display:flex;
+}
+
+.userboard {
+  display:flex;
+  justify-content: center;
+  color:black
+}
+
+.board {
+  border-style:solid;
+  border-width: 1px;
+  margin:20px;
+  width:600px;
+  background-color: white;
+  padding:20px;
+}
+
+
+
+button {
+  margin:10px;
+}
+
+.request-me {
+  background-color:#80808038;
+  display:flex;
+  margin:10px;
+}
+
+.request-details {
+  margin:10px;
+  text-align:left;
+  padding:5px;
+  flex-grow:1;
+}
+
+.request-status {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin:10px;
+  padding:5px;
+}
+
+.view-user {
+  display:flex;
+  justify-content: space-between;
+  background-color: #80808038;
+  margin:10px;
+}
+
+.view-user > button {
+  margin-top: 50px;
+}
+
+.user-image >img{
+  height:100px;
+  margin:20px;
+}
+
+.user-info {
+  display:flex;
+  align-items: center;
+}

@@ -1,0 +1,9 @@
+.Search {
+  display:flex;
+  flex-direction: row;
+}
+
+.forMap {
+  width:900px;
+  height:800px;
+}

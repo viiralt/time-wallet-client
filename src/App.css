@@ -1,0 +1,10 @@
+body {
+  background-image: url('../src/assets/dashboard-background2.jpeg');
+}
+
+.App {
+
+  text-align: center;
+  color: white;
+  font-family: 'Signika', sans-serif;
+}
