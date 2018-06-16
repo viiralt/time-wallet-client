@@ -30,14 +30,14 @@ class TaskForm extends Component {
     newTask.time = Number(newTask.time);
 
     fetchPostTask(newTask);
-    fetchMyAskTasks()
-    .then(tasks => {
-      this.props.setMyAskTasks(tasks)
-    })
-
-    this.props.closePopup();
-    // this.props.addRequest(newRequest);
-    event.preventDefault();
+    // fetchMyAskTasks()
+    // .then(tasks => {
+    //   this.props.setMyAskTasks(tasks)
+    // })
+    //
+    // this.props.closePopup();
+    // // this.props.addRequest(newRequest);
+    // event.preventDefault();
   }
 
   render() {

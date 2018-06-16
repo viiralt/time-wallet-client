@@ -26,16 +26,16 @@ class Login extends Component {
       window.localStorage.setItem("token", data[0])
       this.props.changeState({...data[1], authorized:true})
     })
-    .then(()=> {
-      fetchMyAskTasks()
-      .then(data => {
-        this.props.setMyAskTasks(data)
-      })
-      fetchMyDoTasks()
-      .then(data => {
-        this.props.setMyDoTasks(data)
-      })
-    })
+    // .then(()=> {
+    //   fetchMyAskTasks()
+    //   .then(data => {
+    //     this.props.setMyAskTasks(data)
+    //   })
+    //   fetchMyDoTasks()
+    //   .then(data => {
+    //     this.props.setMyDoTasks(data)
+    //   })
+    // })
   }
 
   render() {
@@ -50,7 +50,7 @@ class Login extends Component {
         <textarea name="email" onChange={this.handleChange} placeholder="Email"/>
         <textarea name="password"  onChange={this.handleChange} placeholder="Password"/>
         <Link to="/"><button onClick={this.handleSubmit}>Submit</button></Link>
-        <a>Not registered?</a>
+        <Link to="/createUser">Not registered?</Link>
       </div>
     );
   }

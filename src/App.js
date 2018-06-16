@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Login from './components/Login';
+import CreateUser from './components/CreateUser';
 import Dashboard from './components/Dashboard';
 import { Route, withRouter } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
@@ -47,6 +48,7 @@ class App extends Component {
       <div className="App">
       <Route path="/" component={Dashboard}/>
       <Route exact={true} path="/login" component={Login}/>
+      <Route path="/createUser" component={CreateUser}/>
       </div>
     )
   }
