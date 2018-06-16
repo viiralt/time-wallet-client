@@ -25,23 +25,23 @@ export const fetchSignIn = (email, password) => {
 }
 
 
-export const fetchMyAskTasks = () => {
-  const params = {
-    method:'GET',
-    headers:{token:token}
-  }
-  return fetch(`${api}/myAskTasks`, params)
-  .then(data => data.json())
-}
-
-export const fetchMyDoTasks = () => {
-  const params = {
-    method:'GET',
-    headers:{token:token}
-  }
-  return fetch(`${api}/myDoTasks`, params)
-  .then(data => data.json())
-}
+// export const fetchMyAskTasks = () => {
+//   const params = {
+//     method:'GET',
+//     headers:{token:token}
+//   }
+//   return fetch(`${api}/myAskTasks`, params)
+//   .then(data => data.json())
+// }
+//
+// export const fetchMyDoTasks = () => {
+//   const params = {
+//     method:'GET',
+//     headers:{token:token}
+//   }
+//   return fetch(`${api}/myDoTasks`, params)
+//   .then(data => data.json())
+// }
 
 export const fetchPostTask = (task) => {
   const params = {

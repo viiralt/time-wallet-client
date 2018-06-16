@@ -26,19 +26,19 @@ class App extends Component {
     .then(data => {
       this.props.changeState({...data});
     })
-    .then(()=> {
-      if (this.props.authorized) {
-        fetchMyAskTasks()
-        .then(data => {
-          this.props.setMyAskTasks(data)
-        })
-        fetchMyDoTasks()
-        .then(data => {
-          console.log("myDoTasks", data);
-          this.props.setMyDoTasks(data)
-        })
-      }
-    });
+    // .then(()=> {
+    //   if (this.props.authorized) {
+    //     fetchMyAskTasks()
+    //     .then(data => {
+    //       this.props.setMyAskTasks(data)
+    //     })
+    //     fetchMyDoTasks()
+    //     .then(data => {
+    //       console.log("myDoTasks", data);
+    //       this.props.setMyDoTasks(data)
+    //     })
+    //   }
+    // });
 
   }
 

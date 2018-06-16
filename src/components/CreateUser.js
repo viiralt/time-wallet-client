@@ -1,83 +1,65 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './CreateUser.css';
-import { closePopup, addRequest, setMyAskTasks } from '../actions.js';
-import { fetchPostTask, fetchMyAskTasks } from '../data/fetchServer'
+import { changeState, setMyAskTasks, setMyDoTasks } from '../actions';
+
+import { fetchSignIn, fetchMyDoTasks, fetchMyAskTasks } from '../data/fetchServer'
 class CreateUser extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description:'',
-      time:''
+      email:"",
+      firstName:"",
+      lastName:"",
+      password:"",
+      location: "",
     };
   }
 
-  // handleChange = (event) => {
-  //   this.setState({[event.target.name]: event.target.value});
-  // }
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value});
+  }
 
-  // fetch(`http://localhost:3000/events`, {
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type':'application/json'
-  //   },
-  //   method: 'POST',
-  //   body: JSON.stringify({title: a, date: b, venue: c})
-  //
-  // })
 
-  handleSubmit = (event) => {
-    fetch(`http://localhost:3006/createUser`, {
+
+  handleSubmit = async (event) => {
+    await fetch('http://localhost:3006/createUser', {
       headers: {
         'Accept': 'application/json',
         'Content-Type':'application/json'
       },
       method: 'POST',
       body: JSON.stringify({
-        email: event.target.email,
-        firstName: event.target.firstName,
-        lastName: event.target.lastName,
-        password: event.target.password,
+        email: this.state.email,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        password: this.state.password,
         })
 
     })
+  this.setState({location: (
+    <Redirect to='/login'/>
+  )})
   }
-  //   const newTask= {
-  //     ...this.state,
-  //     userAsk: this.props.userId,
-  //     userAskName: this.props.firstname,
-  //     picture:this.props.picture,
-  //     status:"Submitted"
-  //   }
-  //   newTask.time = Number(newTask.time);
-  //
-  //   fetchPostTask(newTask);
-  //   fetchMyAskTasks()
-  //   .then(tasks => {
-  //     this.props.setMyAskTasks(tasks)
-  //   })
-  //
-  //   this.props.closePopup();
-  //   // this.props.addRequest(newRequest);
-  //   event.preventDefault();
-  // }
+
 
   render() {
+
     return (
+      <div>
+      <div className="CreateUser" location={this.state.location}></div>
+     <div className='popup'>
 
-    <div className='popup'>
-
-      <form onSubmit={this.handleSubmit} className = 'popup_inner'>
+      <form onSubmit={this.handleSubmit} className = 'createUser'>
         <label>
           Email:
           <input name="email" type="text" value={this.state.email} onChange={this.handleChange} />
         </label>
         <label>
           First Name:
-          <input name="firsName" type="text" value={this.state.firsname} onChange={this.handleChange} />
+          <input name="firstName" type="text" value={this.state.firsname} onChange={this.handleChange} />
         </label>
         <label>
           Last Name:
@@ -90,22 +72,22 @@ class CreateUser extends Component {
         <input type="submit" value="Submit"/>
       </form>
     </div>
+    </div>
     );
   }
 }
 
 
 const mapStateToProps = (state) => ({
-  userId: state.userId,
-  myRequests: state.myRequests,
-  picture: state.picture,
-  firstname:state.firstname,
+  email:state.email,
+  password:state.password,
+  authorized:state.authorized,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closePopup:()=>dispatch(closePopup()),
-  // addRequest:(req)=>dispatch(addRequest(req))
-  setMyAskTasks:(tasks) => dispatch(setMyAskTasks(tasks))
+  changeState: (obj) => dispatch(changeState(obj)),
+  setMyAskTasks: (tasks) => dispatch(setMyAskTasks(tasks)),
+  setMyDoTasks: (tasks) => dispatch(setMyDoTasks(tasks)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateUser));
