@@ -13,6 +13,8 @@ const defaultState = {
   walletId:'',
   location:{lat:41.394043, lng:2.199148},
   myRequests:{
+
+
   },
   myJobs:{
     id1: {

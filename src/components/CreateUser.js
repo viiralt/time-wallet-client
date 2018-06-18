@@ -25,7 +25,7 @@ class CreateUser extends Component {
 
 
   handleSubmit = async (event) => {
-    await fetch('http://localhost:3006/createUser', {
+    await fetch('http://localhost:3006/users', {
       headers: {
         'Accept': 'application/json',
         'Content-Type':'application/json'

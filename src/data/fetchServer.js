@@ -16,9 +16,10 @@ export const fetchSignIn = (email, password) => {
     method: 'GET',
     headers:{Authorization: 'Basic ' + base64.encode(email + ':' + password)}
   };
-  return fetch(`${api}/signin`, params)
+  return fetch(`${api}/login`, params)
   .then((data) => {
-    if (data.status === 200) return data;
+    if (data.status === 200)
+    return data;
     // ELSE DO SOMETHING IF THE PASSWORD WAS WRONG/ EMAIL
   })
   .then((data) => data.json())

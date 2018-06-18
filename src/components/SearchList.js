@@ -46,7 +46,8 @@ class SearchList extends Component {
         <div className ="order-list">
           <div className="order-text"><span>Order by: </span></div><MuiThemeProvider><DropDownOptions/></MuiThemeProvider>
         </div>
-        {Object.keys(this.props.allJobs).map((key)=> {
+        {Object.keys(this.props.allJobs).map((key, index)=> {
+          key={index}
           return this.renderSearchItem(key)}
         )}
       </div>

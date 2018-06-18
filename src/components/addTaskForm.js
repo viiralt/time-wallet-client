@@ -24,7 +24,7 @@ class TaskForm extends Component {
       ...this.state,
       userAsk: this.props.userId,
       userAskName: this.props.firstname,
-      picture:this.props.picture,
+    //  picture:this.props.picture,
       status:"Submitted"
     }
     newTask.time = Number(newTask.time);

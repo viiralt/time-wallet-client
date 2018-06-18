@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeState } from '../actions';
 import { Link, withRouter } from 'react-router-dom';
+import SearchList from './SearchList';
 const base64 = require('base-64');
+
 
 class JobsForMe extends Component {
 
@@ -35,11 +37,11 @@ class JobsForMe extends Component {
       <div className="my-jobs board">
         <ul className="my-jobs-header">
           <li><h1>Tasks For Me</h1></li>
-          <li><Link to="/dashboard/search"><i className="fa fa-plus-square fa-2x" aria-hidden="true"></i></Link></li>
+          <li><Link to="/dashboard/search"><i className="fa fa-plus-square fa-2x" aria-hidden="true" ></i></Link></li>
         </ul>
-        {idList.length>0?idList.map((key)=>{
+        {idList.length>0?idList.map((key, index)=>{
           return (
-            <div id={key} className="request-me">
+            <div key={index} id={key} className="request-me">
               <div className="request-details">
                 <h2>{this.props.myJobs[key].title}</h2>
                 <span>Time: {this.props.myJobs[key].time} minute{this.props.myJobs[key].time>1?"s":""}</span>
