@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { openPopup, acceptRequest, changeState } from '../actions';
 import { fetchUsers, confirmTask, fetchMe } from '../data/fetchServer'
 import TaskForm from './addTaskForm.js';

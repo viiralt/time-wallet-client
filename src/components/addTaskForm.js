@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './addTaskForm.css';
-import { closePopup, addRequest, setMyAskTasks } from '../actions.js';
+import { closePopup, setMyAskTasks } from '../actions.js';
 import { fetchPostTask, fetchMyAskTasks } from '../data/fetchServer'
 class TaskForm extends Component {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import SearchList from './SearchList';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeState, setSearchTasks } from '../actions.js';
 import { fetchSearchTasks } from '../data/fetchServer';
@@ -14,7 +14,6 @@ class Search extends Component {
     this.state = {
       mounted:false,
     }
-    const params = {headers:{token:window.localStorage.getItem('token')}}
     fetchSearchTasks()
     .then(tasks => {
       this.props.setSearchTasks(tasks);
@@ -40,6 +39,7 @@ class Search extends Component {
         <div className="Search">
           <div className="forMap"><MapContainer/></div>
           <SearchList/>
+          <Link to={`/${this.props.name}`} className="BackToMainPage"><button>Back to Main Page</button></Link>
         </div>
       )
     }
@@ -49,6 +49,7 @@ class Search extends Component {
 
 const mapStateToProps = (state) => ({
   allJobs:state.allJobs,
+  name: state.firstName
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -6,9 +6,6 @@ import { fetchMyAskTasks, fetchMyDoTasks, fetchSignIn } from '../data/fetchServe
 import './Login.css';
 
 
-const base64 = require('base-64');
-
-
 class Login extends Component {
   constructor(props) {
     super(props);

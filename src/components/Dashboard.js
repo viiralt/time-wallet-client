@@ -56,7 +56,7 @@ class Dashboard extends Component {
     return (
       <div className="Dashboard">
         <Navbar/>
-        <Route exact={true} path="/:email" component={Profile}/>
+        <Route exact={true} path="/:firstName" component={Profile}/>
         <Route exact={true} path="/dashboard/search" component={Search}/>
       </div>
     )

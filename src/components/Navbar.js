@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import './Navbar.css'
-import { withRouter, Link , Redirect} from 'react-router-dom';
+import { withRouter, Redirect} from 'react-router-dom';
 import { logoutState } from '../actions.js';
 
 

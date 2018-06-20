@@ -6,9 +6,7 @@ import CreateUser from './components/CreateUser';
 import Dashboard from './components/Dashboard';
 import Search from './components/Search';
 import { Route, withRouter, Switch } from 'react-router-dom';
-import { instanceOf } from 'prop-types';
 import { changeState, setMyAskTasks, setMyDoTasks } from './actions';
-import { withCookies, Cookies } from 'react-cookie';
 import { fetchMyAskTasks, fetchMyDoTasks, fetchMe } from './data/fetchServer.js';
 
 class App extends Component {

@@ -2,21 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeState } from '../actions';
 import { Link, withRouter } from 'react-router-dom';
-import SearchList from './SearchList';
-const base64 = require('base-64');
 
 
 class JobsForMe extends Component {
-
-  constructor (props) {
-    super(props);
-    const params ={
-      method: 'POST',
-      headers:{
-        token:window.localStorage.getItem('token')
-      }
-    };
-  }
 
   renderStatusButton (key) {
     const status = this.props.myJobs[key].status

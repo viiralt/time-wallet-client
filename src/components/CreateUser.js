@@ -3,8 +3,6 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './CreateUser.css';
 import { changeState, setMyAskTasks, setMyDoTasks } from '../actions';
-
-import { fetchSignIn, fetchMyDoTasks, fetchMyAskTasks } from '../data/fetchServer'
 class CreateUser extends Component {
 
   constructor(props) {

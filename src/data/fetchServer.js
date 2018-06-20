@@ -65,7 +65,7 @@ export const fetchSearchTasks = () => {
   .then(data => data.json())
 }
 
-export const requestToDoTask = async (taskId, userId) => {
+export const requestToDoTask = (taskId, userId) => {
   const params = {
     method: 'PUT',
     body: JSON.stringify({status:'User Requested', taskAcceptedById:userId}),
@@ -74,8 +74,8 @@ export const requestToDoTask = async (taskId, userId) => {
       'Content-Type': 'application/json'
     }
   };
-  return await fetch(`${api}/task/${taskId}`, params)
-  .then(data => data.json())
+  return fetch(`${api}/task/${taskId}`, params)
+  // .then(data => data.json())
 }
 
 export const fetchUsers = (userList) => {

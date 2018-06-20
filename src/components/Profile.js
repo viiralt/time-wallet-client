@@ -21,6 +21,7 @@ class Profile extends Component {
           <div className="userboard">
             <JobsForMe/>
             <JobsForYou/>
+
         </div>
 
 
