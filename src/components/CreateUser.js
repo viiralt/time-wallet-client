@@ -14,7 +14,7 @@ class CreateUser extends Component {
       firstName:"",
       lastName:"",
       password:"",
-      location: "",
+      location: ""
     };
   }
 
@@ -40,7 +40,7 @@ class CreateUser extends Component {
 
     })
   this.setState({location: (
-    <Redirect to='/login'/>
+    <Redirect to='/'/>
   )})
   }
 
@@ -49,7 +49,7 @@ class CreateUser extends Component {
 
     return (
       <div>
-      <div className="CreateUser" location={this.state.location}></div>
+      <div>{this.state.location}></div>
      <div className='popup'>
 
       <form onSubmit={this.handleSubmit} className = 'createUser'>
@@ -59,11 +59,11 @@ class CreateUser extends Component {
         </label>
         <label>
           First Name:
-          <input name="firstName" type="text" value={this.state.firsname} onChange={this.handleChange} />
+          <input name="firstName" type="text" value={this.state.firsName} onChange={this.handleChange} />
         </label>
         <label>
           Last Name:
-          <input name="lastName" type="text" value={this.state.lastname} onChange={this.handleChange} />
+          <input name="lastName" type="text" value={this.state.lastName} onChange={this.handleChange} />
         </label>
         <label>
           Password:

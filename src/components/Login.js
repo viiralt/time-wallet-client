@@ -15,42 +15,50 @@ class Login extends Component {
     this.state = {
       email:"",
       password:"",
+      location: false
+
     }
+
   }
   handleChange = (event) => {
     this.setState({[event.target.name]:event.target.value})
   }
-  handleSubmit = () => {
-    fetchSignIn(this.state.email, this.state.password)
-    .then((data) => {
+  handleSubmit =  async () => {
+    await fetchSignIn(this.state.email, this.state.password)
+        .then((data) => {
       window.localStorage.setItem("token", data[0])
       this.props.changeState({...data[1], authorized:true})
     })
-    // .then(()=> {
-    //   fetchMyAskTasks()
-    //   .then(data => {
-    //     this.props.setMyAskTasks(data)
-    //   })
-    //   fetchMyDoTasks()
-    //   .then(data => {
-    //     this.props.setMyDoTasks(data)
-    //   })
-    // })
+    await (()=> {
+      fetchMyAskTasks()
+
+      .then(data => {
+        this.props.setMyAskTasks(data)
+      })
+      fetchMyDoTasks()
+      .then(data => {
+        this.props.setMyDoTasks(data)
+      })
+
+    })
+     this.setState({location: <Redirect to={`/${this.props.name}`}/>})
   }
 
   render() {
-    const location="/";
-    if (this.props.authorized) {
-      return (
-        <Redirect to='/'/>
-      )
-    }
+    // let location = "";
+    //
+    // if (this.props.authorized) {
+    //   location =  (
+    //     <Redirect to={`/${this.state.email}`}/>
+    //   )
+    // }
     return (
-      <div className="Login" location={location}>
+      <div className="Login" >
+        <div>{this.state.location}</div>
         <textarea name="email" onChange={this.handleChange} placeholder="Email"/>
         <textarea name="password"  onChange={this.handleChange} placeholder="Password"/>
-        <Link to="/"><button onClick={this.handleSubmit}>Submit</button></Link>
-        <Link to="/createUser">Not registered?</Link>
+        <button onClick={this.handleSubmit}>Submit</button>
+        <Link  to="/createUser">Not registered?</Link>
       </div>
     );
   }
@@ -60,6 +68,7 @@ const mapStateToProps = (state) => ({
   email:state.email,
   password:state.password,
   authorized:state.authorized,
+  name: state.firstName
 });
 
 const mapDispatchToProps = (dispatch) => ({

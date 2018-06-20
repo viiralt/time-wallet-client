@@ -26,23 +26,23 @@ export const fetchSignIn = (email, password) => {
 }
 
 
-// export const fetchMyAskTasks = () => {
-//   const params = {
-//     method:'GET',
-//     headers:{token:token}
-//   }
-//   return fetch(`${api}/myAskTasks`, params)
-//   .then(data => data.json())
-// }
-//
-// export const fetchMyDoTasks = () => {
-//   const params = {
-//     method:'GET',
-//     headers:{token:token}
-//   }
-//   return fetch(`${api}/myDoTasks`, params)
-//   .then(data => data.json())
-// }
+export const fetchMyAskTasks = () => {
+  const params = {
+    method:'GET',
+    headers:{token:token}
+  }
+  return fetch(`${api}/myasktasks`, params)
+  .then(data => data.json())
+}
+
+export const fetchMyDoTasks = () => {
+  const params = {
+    method:'GET',
+    headers:{token:token}
+  }
+  return fetch(`${api}/mydotasks`, params)
+  .then(data => data.json())
+}
 
 export const fetchPostTask = (task) => {
   const params = {
@@ -65,16 +65,16 @@ export const fetchSearchTasks = () => {
   .then(data => data.json())
 }
 
-export const requestToDoTask = (taskId, userId) => {
+export const requestToDoTask = async (taskId, userId) => {
   const params = {
     method: 'PUT',
-    body: JSON.stringify({status:'User Requested', userDo:userId}),
+    body: JSON.stringify({status:'User Requested', taskAcceptedById:userId}),
     headers:{
       token:token,
       'Content-Type': 'application/json'
     }
   };
-  return fetch(`${api}/task/${taskId}`, params)
+  return await fetch(`${api}/task/${taskId}`, params)
   .then(data => data.json())
 }
 
@@ -90,7 +90,7 @@ export const fetchUsers = (userList) => {
 export const confirmTask = (taskId, userId) => {
   const params = {
     method:'PUT',
-    body: JSON.stringify({status:'Request Accepted', userDo:userId}),
+    body: JSON.stringify({status:'Request Accepted', taskAcceptedById:userId}),
     headers:{
       token:token,
       'Content-Type': 'application/json'

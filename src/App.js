@@ -4,7 +4,8 @@ import './App.css';
 import Login from './components/Login';
 import CreateUser from './components/CreateUser';
 import Dashboard from './components/Dashboard';
-import { Route, withRouter } from 'react-router-dom';
+import Search from './components/Search';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
 import { changeState, setMyAskTasks, setMyDoTasks } from './actions';
 import { withCookies, Cookies } from 'react-cookie';
@@ -26,19 +27,18 @@ class App extends Component {
     .then(data => {
       this.props.changeState({...data});
     })
-    // .then(()=> {
-    //   if (this.props.authorized) {
-    //     fetchMyAskTasks()
-    //     .then(data => {
-    //       this.props.setMyAskTasks(data)
-    //     })
-    //     fetchMyDoTasks()
-    //     .then(data => {
-    //       console.log("myDoTasks", data);
-    //       this.props.setMyDoTasks(data)
-    //     })
-    //   }
-    // });
+    .then(()=> {
+      if (this.props.authorized) {
+        fetchMyAskTasks()
+        .then(data => {
+          this.props.setMyAskTasks(data)
+        })
+        fetchMyDoTasks()
+        .then(data => {
+          this.props.setMyDoTasks(data)
+        })
+      }
+    });
 
   }
 
@@ -46,9 +46,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Route path="/" component={Dashboard}/>
-      <Route exact={true} path="/login" component={Login}/>
-      <Route path="/createUser" component={CreateUser}/>
+      <Switch>
+      <Route exact={true} path="/" component={Login}/>
+      <Route exact={true} path="/createUser" component={CreateUser}/>
+      <Route exact={true} path="/:firstName" component={Dashboard}/>
+      <Route exact={true} path="/dashboard/search" component={Search}/>
+    </Switch>
       </div>
     )
   }

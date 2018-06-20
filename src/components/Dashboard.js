@@ -22,7 +22,7 @@ class Dashboard extends Component {
       method:'GET',
       headers:{token:window.localStorage.getItem('token')}
     }
-    fetch('http://localhost:3006/myAskTasks', params)
+    fetch('http://localhost:3006/myasktasks', params)
     .then(data => data.json())
     .then(data => {
       this.props.setMyAskTasks(data)
@@ -35,7 +35,7 @@ class Dashboard extends Component {
       method:'GET',
       headers:{token:window.localStorage.getItem('token')}
     }
-    fetch('http://localhost:3006/myDoTasks', params)
+    fetch('http://localhost:3006/mydotasks', params)
     .then(data => data.json())
     .then(data => {
       this.props.setMyDoTasks(data)
@@ -50,14 +50,14 @@ class Dashboard extends Component {
     }
     if (this.props.authorized === false) {
       return (
-        <Redirect to='/login'/>
+        <Redirect to='/'/>
       )
     }
     return (
       <div className="Dashboard">
         <Navbar/>
-        <Route exact={true} path="/" component={Profile}/>
-        <Route path="/dashboard/search" component={Search}/>
+        <Route exact={true} path="/:email" component={Profile}/>
+        <Route exact={true} path="/dashboard/search" component={Search}/>
       </div>
     )
   }

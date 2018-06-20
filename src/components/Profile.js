@@ -16,7 +16,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="Profile">
-        <h1>Welcome, {this.capitalize(this.props.firstname)}</h1>
+        <h1>Welcome, {this.capitalize(this.props.firstName)}</h1>
         <div className="balance">Your balance is: {this.props.balance} minute{this.props.balance>1?"s":""}</div>
           <div className="userboard">
             <JobsForMe/>
@@ -30,7 +30,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  firstname:state.firstname,
+  firstName:state.firstName,
   balance:state.balance,
   myRequests:state.myRequests,
   myJobs:state.myJobs,

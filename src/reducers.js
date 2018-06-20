@@ -5,22 +5,20 @@ const defaultState = {
   authorized: "",
   email:'',
   password:'',
-  firstname:'',
-  lastname:'',
+  firstName:'',
+  lastName:'',
   balance:0,
   picture:'',
   userId:'',
   walletId:'',
   location:{lat:41.394043, lng:2.199148},
   myRequests:{
-
-
   },
   myJobs:{
     id1: {
       location:{lat:41.396071, lng:2.180780},
-      userAsk: "Some Guy",
-      userDo:":)",
+      taskRequestedByName: "Some Guy",
+      taskAcceptedById:":)",
       title:"Teach me to dance",
       time:120,
       description:"Describe describe describe",
@@ -29,8 +27,8 @@ const defaultState = {
     },
     id2: {
       location:{lat:41.401712, lng:2.206584},
-      userAsk: "Another",
-      userDo:"Person",
+      taskRequestedByName: "Another",
+      taskAcceptedById:"Person",
       title:"Help",
       time:100,
       description:"Describe describe describe",
@@ -41,8 +39,8 @@ const defaultState = {
   allJobs:{
       id1: {
         taskId: "121212",
-        userAsk: "John Doe",
-        userDo:"",
+        taskRequestedByName: "John Doe",
+        taskAcceptedById:"",
         status:"Submitted",
         title:"Put up shelves",
         description:"Describe describe describe",
@@ -53,8 +51,8 @@ const defaultState = {
       id2: {
         taskId: "121213",
         location:{lat:41.393807, lng:2.179250},
-        userAsk: "Jon Doe",
-        userDo:"",
+        taskRequestedByName: "Jon Doe",
+        taskAcceptedById:"",
         title:"Put up shelves",
         time:60,
         description:"Describe describe describe",
@@ -64,8 +62,8 @@ const defaultState = {
       id3: {
         taskId: "121214",
         location:{lat:41.401712, lng:2.206584},
-        userAsk: "Jon Doe",
-        userDo:"",
+        taskRequestedByName: "Jon Doe",
+        taskAcceptedById:"",
         title:"Put up shelves",
         time:60,
         description:"Describe describe describe",
@@ -106,7 +104,7 @@ const reducers = (state = defaultState, action) => {
     case "ACCEPT_REQUEST":
       let newState = {...state};
       let newRequest = {...state.myRequests[action.taskId]}
-      newRequest.userDo = action.userId;
+      newRequest.taskAcceptedById = action.userId;
       newRequest.status = "Request Accepted";
       let myNewRequests = {...state.myRequests}
       myNewRequests[action.taskId] = newRequest

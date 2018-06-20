@@ -22,14 +22,15 @@ class MapContainer extends React.Component {
           initialCenter={this.props.location}>
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'}
-                  position={this.props.location}
+                //  position={this.props.location}
                   color={'blue'}/>
-          {jobKeys.map((key)=> {
+          {jobKeys.map((key, index)=> {
             return (
               <Marker onClick={this.onMarkerClick}
                       name={this.props.allJobs[key].taskName}
-                      position={this.props.allJobs[key].location}
-                      styles={{color:'blue'}}/>
+                    //  position={this.props.allJobs[key].location}
+                      styles={{color:'blue'}}
+                      key={index}/>
             );
           })}
           <InfoWindow onClose={this.onInfoWindowClose}>

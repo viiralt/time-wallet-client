@@ -18,7 +18,7 @@ class JobsForYou extends Component {
   }
 
   getUsersInterested = async (taskId) => {
-    const userList = [this.props.myRequests[taskId].userDo];
+    const userList = [this.props.myRequests[taskId].taskAcceptedById];
     const params ={
       method: 'GET',
       headers:{
@@ -65,7 +65,7 @@ class JobsForYou extends Component {
       <div id={elem.userId} className="view-user">
         <div className="user-image"><img src={image} alt="user-pic"/></div>
         <div className="user-info">
-          <div className="userName">{elem.firstname}</div>
+          <div className="userName">{elem.firstName}</div>
         </div>
         <button name={elem.userId} onClick = {this.bookUser}>Accept</button>
       </div>
@@ -109,6 +109,7 @@ class JobsForYou extends Component {
 
   render() {
     const idList= Object.keys(this.props.myRequests);
+
     return (
       <div className="my-requests board">
         <ul className="my-request-header">
@@ -116,9 +117,9 @@ class JobsForYou extends Component {
           <li><a onClick={this.props.openPopup}><i className="fa fa-plus-square fa-2x" aria-hidden="true"></i></a></li>
           {this.props.showPopup?<TaskForm/>:null}
         </ul>
-        {idList.length>0?idList.map((key)=>{
+        {idList.length>0?idList.map((key, index)=>{
           return (
-            <div id={key} className="request-me">
+            <div key={index} id={key} className="request-me">
               <div className="request-details">
                 <h2>{this.props.myRequests[key].title}</h2>
                 <span>Time: {this.props.myRequests[key].time} minute{this.props.myRequests[key].time>1?"s":""}</span>

@@ -12,17 +12,26 @@ class Search extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      mounted:false
+      mounted:false,
     }
     const params = {headers:{token:window.localStorage.getItem('token')}}
     fetchSearchTasks()
     .then(tasks => {
       this.props.setSearchTasks(tasks);
-    })
+        })
+    // .then(this.setState({mounted:true}))
+    // .then(console.log(Object.keys(this.props.allJobs).length))
+
+
+
+
   }
 
   componentDidMount() {
-    this.setState({mounted:true})
+    if (Object.keys(this.props.allJobs).length > 0) {
+
+      this.setState({mounted:true})
+    }
   }
 
   render() {
@@ -34,12 +43,12 @@ class Search extends Component {
         </div>
       )
     }
-    return null;
+    return null
   }
 }
 
 const mapStateToProps = (state) => ({
-  allJobs:state.jobs,
+  allJobs:state.allJobs,
 });
 
 const mapDispatchToProps = (dispatch) => ({

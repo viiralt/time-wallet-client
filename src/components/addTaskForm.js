@@ -19,25 +19,25 @@ class TaskForm extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     const newTask= {
       ...this.state,
-      userAsk: this.props.userId,
-      userAskName: this.props.firstname,
+      taskRequestedById: this.props.userId,
+      taskRequestedByName: this.props.firstName,
     //  picture:this.props.picture,
       status:"Submitted"
     }
     newTask.time = Number(newTask.time);
 
-    fetchPostTask(newTask);
-    // fetchMyAskTasks()
-    // .then(tasks => {
-    //   this.props.setMyAskTasks(tasks)
-    // })
-    //
-    // this.props.closePopup();
-    // // this.props.addRequest(newRequest);
-    // event.preventDefault();
+    await fetchPostTask(newTask);
+    await fetchMyAskTasks()
+    .then(tasks => {
+      this.props.setMyAskTasks(tasks)
+    })
+
+    this.props.closePopup();
+    // this.props.addRequest(newRequest);
+    event.preventDefault();
   }
 
   render() {
@@ -68,7 +68,7 @@ const mapStateToProps = (state) => ({
   userId: state.userId,
   myRequests: state.myRequests,
   picture: state.picture,
-  firstname:state.firstname,
+  firstName:state.firstName,
 });
 
 const mapDispatchToProps = (dispatch) => ({
