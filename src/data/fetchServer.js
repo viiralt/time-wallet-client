@@ -6,7 +6,7 @@ const base64 = require('base-64');
 export const fetchMe = () =>{
   const params = {
     headers:{
-      token:token}}
+      token:window.localStorage.getItem('token'),}}
   return fetch(`${api}/me`, params)
   .then(data => data)
 }
@@ -29,7 +29,7 @@ export const fetchSignIn = (email, password) => {
 export const fetchMyAskTasks = () => {
   const params = {
     method:'GET',
-    headers:{token:token}
+    headers:{token:window.localStorage.getItem('token'),}
   }
   return fetch(`${api}/myasktasks`, params)
   .then(data => data.json())
@@ -38,7 +38,7 @@ export const fetchMyAskTasks = () => {
 export const fetchMyDoTasks = () => {
   const params = {
     method:'GET',
-    headers:{token:token}
+    headers:{token:window.localStorage.getItem('token'),}
   }
   return fetch(`${api}/mydotasks`, params)
   .then(data => data.json())
@@ -58,7 +58,7 @@ export const fetchPostTask = (task) => {
 export const fetchSearchTasks = () => {
   const params = {
     headers:{
-      token:token
+      token:window.localStorage.getItem('token'),
     }
   };
   return fetch(`${api}/searchTasks`, params)
@@ -70,7 +70,7 @@ export const requestToDoTask = (taskId, userId) => {
     method: 'PUT',
     body: JSON.stringify({status:'User Requested', taskAcceptedById:userId}),
     headers:{
-      token:token,
+      token:window.localStorage.getItem('token'),
       'Content-Type': 'application/json'
     }
   };
@@ -81,7 +81,7 @@ export const requestToDoTask = (taskId, userId) => {
 export const fetchUsers = (userList) => {
   const params = {
     method:'GET',
-    headers:{token:token}
+    headers:{token:window.localStorage.getItem('token'),}
   }
   return fetch(`${api}/getUsers/${userList}`, params)
   .then(data => data.json())
@@ -92,7 +92,7 @@ export const confirmTask = (taskId, userId) => {
     method:'PUT',
     body: JSON.stringify({status:'Request Accepted', taskAcceptedById:userId}),
     headers:{
-      token:token,
+      token:window.localStorage.getItem('token'),
       'Content-Type': 'application/json'
     }
   }
