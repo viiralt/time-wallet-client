@@ -13,13 +13,13 @@ class Login extends Component {
       email:"",
       password:"",
       location: false
-
     }
-
   }
+
   handleChange = (event) => {
     this.setState({[event.target.name]:event.target.value})
   }
+
   handleSubmit =  async () => {
     await fetchSignIn(this.state.email, this.state.password)
         .then((data) => {
@@ -42,13 +42,6 @@ class Login extends Component {
   }
 
   render() {
-    // let location = "";
-    //
-    // if (this.props.authorized) {
-    //   location =  (
-    //     <Redirect to={`/${this.state.email}`}/>
-    //   )
-    // }
     return (
       <div className="Login" >
         <div>{this.state.location}</div>

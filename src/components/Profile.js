@@ -7,12 +7,12 @@ import JobsForYou from './JobsForYou';
 import './Profile.css';
 
 
-
 class Profile extends Component {
 
   capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
+
   render() {
     return (
       <div className="Profile">
@@ -21,10 +21,7 @@ class Profile extends Component {
           <div className="userboard">
             <JobsForMe/>
             <JobsForYou/>
-
         </div>
-
-
       </div>
     );
   }
@@ -35,7 +32,6 @@ const mapStateToProps = (state) => ({
   balance:state.balance,
   myRequests:state.myRequests,
   myJobs:state.myJobs,
-
 });
 
 const mapDispatchToProps = (dispatch) => ({

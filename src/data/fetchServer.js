@@ -1,7 +1,5 @@
-const api = 'http://localhost:3006';
-const token = window.localStorage.getItem('token');
-const base64 = require('base-64');
-
+const api = 'http://localhost:3006'
+const base64 = require('base-64')
 
 export const fetchMe = () =>{
   const params = {
@@ -23,8 +21,7 @@ export const fetchSignIn = (email, password) => {
     // ELSE DO SOMETHING IF THE PASSWORD WAS WRONG/ EMAIL
   })
   .then((data) => data.json())
-}
-
+};
 
 export const fetchMyAskTasks = () => {
   const params = {
@@ -96,7 +93,5 @@ export const confirmTask = (taskId, userId) => {
       'Content-Type': 'application/json'
     }
   }
-  return fetch(`${api}/task/${taskId}`, params)
-  .then(data => {console.log(data);})
-
+    return fetch(`${api}/task/${taskId}`, params)
 }

@@ -24,7 +24,6 @@ class TaskForm extends Component {
       ...this.state,
       taskRequestedById: this.props.userId,
       taskRequestedByName: this.props.firstName,
-    //  picture:this.props.picture,
       status:"Submitted"
     }
     newTask.time = Number(newTask.time);
@@ -36,7 +35,6 @@ class TaskForm extends Component {
     })
 
     this.props.closePopup();
-    // this.props.addRequest(newRequest);
     event.preventDefault();
   }
 
@@ -63,7 +61,6 @@ class TaskForm extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => ({
   userId: state.userId,
   myRequests: state.myRequests,
@@ -73,7 +70,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   closePopup:()=>dispatch(closePopup()),
-  // addRequest:(req)=>dispatch(addRequest(req))
   setMyAskTasks:(tasks) => dispatch(setMyAskTasks(tasks))
 });
 

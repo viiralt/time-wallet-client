@@ -36,10 +36,8 @@ class App extends Component {
           this.props.setMyDoTasks(data)
         })
       }
-    });
-
+    })
   }
-
 
   render() {
     return (

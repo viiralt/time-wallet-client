@@ -27,7 +27,6 @@ class Dashboard extends Component {
     .then(data => {
       this.props.setMyAskTasks(data)
     })
-
   }
 
   getMyDoTasks = () => {

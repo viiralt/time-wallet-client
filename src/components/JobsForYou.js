@@ -28,7 +28,6 @@ class JobsForYou extends Component {
 
     fetchUsers(userList)
     .then(users => {
-      console.log("users", users);
       this.setState({relevantUserList:users})
     })
   }
@@ -73,7 +72,6 @@ class JobsForYou extends Component {
   }
 
   renderUsersInterested = (taskId) => {
-    console.log("relevant users", this.state.relevantUserList);
     return (<div className='popup'>
           <div className = 'popup_inner'>
             {this.state.relevantUserList.map((elem) => {
@@ -84,8 +82,6 @@ class JobsForYou extends Component {
           </div>
         </div>)
   }
-
-
 
   renderStatusButton (key) {
     const status = this.props.myRequests[key].status;

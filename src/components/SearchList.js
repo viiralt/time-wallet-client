@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DropDownOptions from './DropDownMenu.js';
-import { requestToDoTask, fetchMyDoTasks } from '../data/fetchServer.js';
-import { changeState, setMyDoTasks } from '../actions';
+import { requestToDoTask} from '../data/fetchServer.js';
 import './SearchList.css';
 
 class SearchList extends Component {
 
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state ={
       requestedTasks:[],
       redirect: false
@@ -19,17 +17,8 @@ class SearchList extends Component {
   }
 
   handleResponseClick =  (event) => {
-
-   requestToDoTask(event.target.name, this.props.userId);
-   this.setState({requestedTasks: this.state.requestedTasks.concat([event.target.name])})
-
-   //   fetchMyDoTasks()
-   //   .then(data => {
-   //    this.props.setMyDoTasks(data)
-   //   })
-   //  .then(this.setState({ redirect: (
-   //   <Redirect to={`/${this.props.name}`} > </Redirect>
-   // )}))
+    requestToDoTask(event.target.name, this.props.userId);
+    this.setState({requestedTasks: this.state.requestedTasks.concat([event.target.name])})
   }
 
   renderSearchItem = (key) => {
@@ -37,21 +26,17 @@ class SearchList extends Component {
     return (
       <div id={job.taskId} className="search-item">
         <div>{this.state.redirect}</div>
-        {/* <div className="search-image"><img src={image} alt="user-pic"/></div> */}
-        <div className="taskInfo">
+          <div className="taskInfo">
           <h1 className="search-title">{job.title}</h1>
           <div className="search-user-ask">{job.userAskName}</div>
           <div className="search-time">{"Time: "+ job.time + " minutes." }</div>
         </div>
-        {this.state.requestedTasks.indexOf(key)===-1?<button name={key} className="search-respond" onClick={this.handleResponseClick}>Request this task!</button>:<button>Requested!</button>}
-        {/* <button name={key}onClick={this.handleResponseClick}>Request this task!</button> */}
+          {this.state.requestedTasks.indexOf(key)===-1?<button name={key} className="search-respond" onClick={this.handleResponseClick}>Request this task!</button>:<button>Requested!</button>}
       </div>
     )
   }
 
-
   render() {
-    console.log(this.state.requestedTasks);
     const allJobs = Object.keys(this.props.allJobs);
     return (
 
@@ -64,8 +49,7 @@ class SearchList extends Component {
           return this.renderSearchItem(key)}
         )}
       </div>
-
-  )
+    )
   }
 }
 

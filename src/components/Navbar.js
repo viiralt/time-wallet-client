@@ -13,6 +13,7 @@ class Navbar extends Component {
         redirect: false,
       }
 }
+
   handleClick = async (e) => {
     e.preventDefault()
     await window.localStorage.setItem("token", null)
@@ -24,7 +25,6 @@ class Navbar extends Component {
 
   render() {
     return (
-
       <div className="Navbar">
         <div>{this.state.redirect}</div>
         <ul>

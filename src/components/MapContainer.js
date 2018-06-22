@@ -51,7 +51,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
   apiKey: "AIzaSyAihUaEvx5FjpJedWt9Lxw0zJLLcib9888"
 })(MapContainer))

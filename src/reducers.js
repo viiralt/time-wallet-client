@@ -1,4 +1,3 @@
-// import { combineReducers } from 'redux';
 
 const defaultState = {
   showPopup:false,
@@ -132,9 +131,7 @@ const reducers = (state = defaultState, action) => {
     return state;
   }
 }
-// const reducers = combineReducers({
-//   //reducer names
-// })
+
 const normalize = (arr, id) => {
   console.log(arr)
   let newObj = {};

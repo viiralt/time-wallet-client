@@ -18,12 +18,6 @@ class Search extends Component {
     .then(tasks => {
       this.props.setSearchTasks(tasks);
         })
-    // .then(this.setState({mounted:true}))
-    // .then(console.log(Object.keys(this.props.allJobs).length))
-
-
-
-
   }
 
   componentDidMount() {

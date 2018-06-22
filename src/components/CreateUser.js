@@ -20,8 +20,6 @@ class CreateUser extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-
-
   handleSubmit = async (event) => {
     await fetch('http://localhost:3006/users', {
       headers: {
